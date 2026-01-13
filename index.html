@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>TAXina – Le taxi nigérien, simple et fiable</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #0bbcd6;
+      --secondary: #10b981;
+      --dark: #034f4f;
+      --light: #e8fffb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(11, 188, 214, 0.95), rgba(16, 185, 129, 0.95)),
+                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23034f4f" width="1200" height="600"/><circle cx="200" cy="150" r="100" fill="%230bbcd6" opacity="0.1"/><circle cx="800" cy="400" r="150" fill="%2310b981" opacity="0.1"/></svg>');
+      background-size: cover;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -100px;
+      right: -100px;
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.3; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+    }
+
+    .hero-logo {
+      width: 140px;
+      height: 140px;
+      background: white;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-subtitle {
+      font-size: 1.4rem;
+      font-weight: 300;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
+    .btn-hero {
+      background: white;
+      color: var(--primary);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      margin: 10px;
+    }
+
+    .btn-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      background: var(--light);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-15px); }
+      60% { transform: translateX(-50%) translateY(-7px); }
+    }
+
+    /* STATS SECTION */
+    .stats {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 80px 0;
+      color: white;
+      position: relative;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: scale(1.05);
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    /* APPS SECTION */
+    .apps-section {
+      padding: 100px 0;
+      background: linear-gradient(180deg, #ffffff 0%, var(--light) 100%);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 60px;
+    }
+
+    .app-card {
+      background: white;
+      border-radius: 30px;
+      padding: 50px 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      height: 100%;
+      border: 2px solid transparent;
+    }
+
+    .app-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 30px 80px rgba(11, 188, 214, 0.2);
+      border-color: var(--primary);
+    }
+
+    .app-icon-wrapper {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+
+    .app-icon {
+      width: 100%;
+      height: 100%;
+      border-radius: 35px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 40px rgba(11, 188, 214, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-icon::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .app-icon i {
+      font-size: 4rem;
+      color: white;
+      z-index: 1;
+    }
+
+    .app-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .app-description {
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .features-list li {
+      padding: 10px 0;
+      color: #555;
+      display: flex;
+      align-items: center;
+    }
+
+    .features-list i {
+      color: var(--secondary);
+      margin-right: 12px;
+      font-size: 1.2rem;
+    }
+
+    .btn-download {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 15px 35px;
+      border-radius: 50px;
+      border: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(11, 188, 214, 0.3);
+    }
+
+    .btn-download:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(11, 188, 214, 0.5);
+    }
+
+    /* HOW IT WORKS */
+    .how-it-works {
+      padding: 100px 0;
+      background: white;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 40px 30px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 auto 25px;
+      box-shadow: 0 10px 30px rgba(11, 188, 214, 0.3);
+    }
+
+    .step-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .step-description {
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--light), white);
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 25px;
+      padding: 40px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .author-info h5 {
+      margin: 0;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .author-info p {
+      margin: 0;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .stars {
+      color: #fbbf24;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 100px 0;
+      background: white;
+    }
+
+    .accordion-item {
+      border: none;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .accordion-button {
+      background: linear-gradient(90deg, rgba(11, 188, 214, 0.1), rgba(16, 185, 129, 0.1));
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 20px 25px;
+      color: var(--dark);
+    }
+
+    .accordion-button:not(.collapsed) {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+    }
+
+    .accordion-body {
+      padding: 25px;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(135deg, #023d3d, var(--dark));
+      color: white;
+      padding: 80px 0 30px;
+    }
+
+    .footer-section {
+      margin-bottom: 40px;
+    }
+
+    .footer-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+      padding-left: 10px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 30px;
+      margin-top: 50px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .contact-info i {
+      color: var(--secondary);
+      font-size: 1.2rem;
+    }
+
+    /* ANIMATIONS */
+    .fade-in {
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="row align-items-center">
+      <div class="col-lg-6 text-center text-lg-start">
+        <div class="hero-logo d-lg-none">
+          <i class="fas fa-taxi" style="font-size: 4rem; color: var(--primary);"></i>
+        </div>
+        <h1 class="hero-title fade-in">TAXina</h1>
+        <p class="hero-subtitle fade-in">Le taxi nigérien, simple, fiable et adapté à nos réalités 🇳🇪</p>
+        <div class="fade-in">
+          <button class="btn-hero" onclick="document.getElementById('apps').scrollIntoView({behavior: 'smooth'})">
+            <i class="fas fa-mobile-alt"></i> Télécharger l'app
+          </button>
+          <button class="btn-hero" onclick="document.getElementById('how').scrollIntoView({behavior: 'smooth'})">
+            <i class="fas fa-play-circle"></i> Comment ça marche
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="hero-logo" style="width: 300px; height: 300px; margin-left: auto;">
+          <i class="fas fa-taxi" style="font-size: 8rem; color: var(--primary);"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <i class="fas fa-chevron-down" style="font-size: 2rem; color: white;"></i>
+  </div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="stats">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <span class="stat-number"><span class="counter" data-target="5000">0</span>+</span>
+          <span class="stat-label">Courses effectuées</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <span class="stat-number"><span class="counter" data-target="1200">0</span>+</span>
+          <span class="stat-label">Utilisateurs actifs</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <span class="stat-number"><span class="counter" data-target="150">0</span>+</span>
+          <span class="stat-label">Chauffeurs partenaires</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <span class="stat-number">4.8<i class="fas fa-star" style="font-size: 2rem; margin-left: 10px;"></i></span>
+          <span class="stat-label">Note moyenne</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPS SECTION -->
+<section class="apps-section" id="apps">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Nos Applications</h2>
+      <p class="section-subtitle">Choisissez l'application qui correspond à vos besoins</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="app-card">
+          <div class="app-icon-wrapper">
+            <div class="app-icon">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+          <h3 class="app-title text-center">TAXina Passager</h3>
+          <p class="app-description text-center">
+            Commandez un taxi facilement, suivez votre course en temps réel et déplacez-vous en toute confiance à Niamey et bientôt dans tout le Niger.
+          </p>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Réservation instantanée 24h/24</li>
+            <li><i class="fas fa-check-circle"></i> Tarifs transparents et négociables</li>
+            <li><i class="fas fa-check-circle"></i> Suivi en temps réel de votre taxi</li>
+            <li><i class="fas fa-check-circle"></i> Profils des chauffeurs vérifiés</li>
+            <li><i class="fas fa-check-circle"></i> Paiement flexible (espèces ou mobile money)</li>
+            <li><i class="fas fa-check-circle"></i> Historique de vos courses</li>
+          </ul>
+          <div class="text-center">
+            <button class="btn-download" onclick="downloadApp('taxina.apk', this)">
+              <i class="fas fa-download"></i> Télécharger l'app Passager
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="app-card">
+          <div class="app-icon-wrapper">
+            <div class="app-icon">
+              <i class="fas fa-car"></i>
+            </div>
+          </div>
+          <h3 class="app-title text-center">TAXina Driver</h3>
+          <p class="app-description text-center">
+            Augmentez vos revenus, travaillez librement et rejoignez une communauté de chauffeurs professionnels. Réservé aux chauffeurs validés.
+          </p>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Recevez des courses instantanément</li>
+            <li><i class="fas fa-check-circle"></i> Gagnez plus avec des tarifs équitables</li>
+            <li><i class="fas fa-check-circle"></i> Horaires flexibles, travaillez quand vous voulez</li>
+            <li><i class="fas fa-check-circle"></i> Statistiques et revenus en temps réel</li>
+            <li><i class="fas fa-check-circle"></i> Support technique dédié</li>
+            <li><i class="fas fa-check-circle"></i> Formation et accompagnement</li>
+          </ul>
+          <div class="text-center">
+            <button class="btn-download" onclick="downloadApp('taxina_driver.apk', this)">
+              <i class="fas fa-download"></i> Télécharger l'app Driver
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Comment ça marche ?</h2>
+      <p class="section-subtitle">Trois étapes simples pour commencer</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4 class="step-title">Téléchargez l'application</h4>
+          <p class="step-description">Cliquez sur le bouton de téléchargement ci-dessus et installez l'application TAXina sur votre téléphone Android.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4 class="step-title">Créez votre compte</h4>
+          <p class="step-description">Inscrivez-vous en quelques secondes avec votre numéro de téléphone. Pour les chauffeurs, votre profil sera validé par notre équipe.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4 class="step-title">Commencez à voyager</h4>
+          <p class="step-description">Commandez votre premier taxi ou commencez à accepter des courses. C'est aussi simple que ça !</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Ce que disent nos utilisateurs</h2>
+      <p class="section-subtitle">Des milliers de personnes nous font confiance chaque jour</p>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"TAXina a changé ma façon de me déplacer à Niamey. Plus besoin de négocier longuement, tout est clair dès le départ. Les chauffeurs sont professionnels et ponctuels."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AM</div>
+            <div class="author-info">
+              <h5>Aminata M.</h5>
+              <p>Utilisatrice depuis 6 mois</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Depuis que j'utilise TAXina Driver, mes revenus ont augmenté de 40%. Je reçois des courses régulièrement et je travaille quand je veux. C'est parfait pour moi !"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">IB</div>
+            <div class="author-info">
+              <h5>Ibrahim B.</h5>
+              <p>Chauffeur partenaire</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Application très pratique et facile à utiliser. Je me sens en sécurité car je connais le profil de mon chauffeur avant même qu'il arrive. Bravo TAXina !"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">FH</div>
+            <div class="author-info">
+              <h5>Fatouma H.</h5>
+              <p>Utilisatrice régulière</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Questions Fréquentes</h2>
+      <p class="section-subtitle">Tout ce que vous devez savoir sur TAXina</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                <i class="fas fa-shield-alt me-3"></i> L'application est-elle sécurisée ?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Absolument ! TAXina est une application officielle, signée et sécurisée. Tous nos chauffeurs sont vérifiés et validés par notre équipe. Vos données personnelles sont protégées et nous ne les partageons jamais avec des tiers.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                <i class="fas fa-money-bill-wave me-3"></i> Quels sont les modes de paiement acceptés ?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                TAXina accepte plusieurs modes de paiement : espèces, mobile money (Orange Money, Moov Money, Airtel Money). Vous pouvez choisir votre mode de paiement préféré dans l'application avant de commander votre course.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                <i class="fas fa-car-side me-3"></i> Comment devenir chauffeur TAXina ?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Téléchargez l'application TAXina Driver, inscrivez-vous avec vos informations et documents (permis de conduire, carte grise, assurance). Notre équipe vérifiera votre dossier et vous contactera pour finaliser votre inscription. Une fois validé, vous pourrez commencer à recevoir des courses.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                <i class="fas fa-map-marked-alt me-3"></i> TAXina est-il disponible dans toute la ville ?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                TAXina couvre actuellement toute la ville de Niamey. Nous travaillons activement pour étendre notre service à d'autres villes du Niger très prochainement. Restez connectés !
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                <i class="fas fa-headset me-3"></i> Comment contacter le support ?
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Notre équipe support est disponible par WhatsApp et téléphone au +227 81 26 50 75. Vous pouvez aussi nous contacter via l'application ou par email à support@taxina.ne. Nous répondons généralement en moins de 2 heures.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 footer-section">
+        <h4 class="footer-title">À propos de TAXina</h4>
+        <p style="color: rgba(255,255,255,0.8); line-height: 1.8;">
+          TAXina est la première plateforme de taxi 100% nigérienne, conçue pour répondre aux besoins de mobilité des citoyens de Niamey et bientôt de tout le Niger. Notre mission : rendre le transport urbain accessible, sûr et efficace pour tous.
+        </p>
+        <div class="social-links">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 footer-section">
+        <h4 class="footer-title">Applications</h4>
+        <ul class="footer-links">
+          <li><a href="#apps"><i class="fas fa-mobile-alt"></i> TAXina Passager</a></li>
+          <li><a href="#apps"><i class="fas fa-car"></i> TAXina Driver</a></li>
+          <li><a href="#how"><i class="fas fa-question-circle"></i> Comment ça marche</a></li>
+          <li><a href="#"><i class="fas fa-gift"></i> Programme parrainage</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 footer-section">
+        <h4 class="footer-title">Entreprise</h4>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-info-circle"></i> À propos</a></li>
+          <li><a href="#"><i class="fas fa-briefcase"></i> Carrières</a></li>
+          <li><a href="#"><i class="fas fa-newspaper"></i> Blog</a></li>
+          <li><a href="#"><i class="fas fa-handshake"></i> Partenaires</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-4 footer-section">
+        <h4 class="footer-title">Contactez-nous</h4>
+        <div class="contact-info">
+          <i class="fas fa-phone"></i>
+          <span>+227 81 26 50 75</span>
+        </div>
+        <div class="contact-info">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp: +227 81 26 50 75</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-envelope"></i>
+          <span>support@taxina.ne</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Niamey, Niger 🇳🇪</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-clock"></i>
+          <span>Support 24h/24, 7j/7</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="mb-0">© 2025 TAXina. Tous droits réservés. Conçu avec ❤️ pour le Niger 🇳🇪</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 15px;">Conditions d'utilisation</a>
+          <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 15px;">Politique de confidentialité</a>
+          <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 15px;">Mentions légales</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Counter Animation
+  function animateCounter() {
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.textContent = Math.floor(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      };
+      updateCounter();
+    });
+  }
+
+  // Trigger counter when stats section is visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter();
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  const statsSection = document.querySelector('.stats');
+  if (statsSection) observer.observe(statsSection);
+
+  // Download button functionality
+  function downloadApp(filename, button) {
+    const originalText = button.innerHTML;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Téléchargement en cours...';
+    button.disabled = true;
+
+    setTimeout(() => {
+      button.innerHTML = '<i class="fas fa-check-circle"></i> Merci pour votre confiance !';
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+      }, 3000);
+    }, 2000);
+  }
+
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Add animation on scroll
+  const fadeElements = document.querySelectorAll('.app-card, .step-card, .testimonial-card');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '0';
+        entry.target.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+          entry.target.style.transition = 'all 0.6s ease';
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, 100);
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  fadeElements.forEach(el => fadeObserver.observe(el));
+</script>
+
+</body>
+</html><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                <i class="fas fa-question-circle me-3"></i> Comment télécharger l'application ?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Cliquez sur le bouton de téléchargement correspondant à votre profil (Passager ou Driver). Votre téléphone peut vous demander d'autoriser l'installation d'applications provenant de sources inconnues. Acceptez cette autorisation pour installer TAXina.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
