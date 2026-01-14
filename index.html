@@ -28,7 +28,6 @@
       overflow-x: hidden;
     }
 
-    /* HERO SECTION */
     .hero {
       min-height: 100vh;
       background: linear-gradient(135deg, rgba(11, 188, 214, 0.95), rgba(16, 185, 129, 0.95)),
@@ -107,6 +106,7 @@
       transition: all 0.3s ease;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       margin: 10px;
+      cursor: pointer;
     }
 
     .btn-hero:hover {
@@ -129,7 +129,6 @@
       60% { transform: translateX(-50%) translateY(-7px); }
     }
 
-    /* STATS SECTION */
     .stats {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       padding: 80px 0;
@@ -161,7 +160,6 @@
       opacity: 0.9;
     }
 
-    /* APPS SECTION */
     .apps-section {
       padding: 100px 0;
       background: linear-gradient(180deg, #ffffff 0%, var(--light) 100%);
@@ -288,6 +286,7 @@
       align-items: center;
       gap: 10px;
       box-shadow: 0 10px 30px rgba(11, 188, 214, 0.3);
+      cursor: pointer;
     }
 
     .btn-download:hover {
@@ -295,7 +294,11 @@
       box-shadow: 0 15px 40px rgba(11, 188, 214, 0.5);
     }
 
-    /* HOW IT WORKS */
+    .btn-download:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
     .how-it-works {
       padding: 100px 0;
       background: white;
@@ -334,108 +337,6 @@
       line-height: 1.7;
     }
 
-    /* TESTIMONIALS */
-    .testimonials {
-      padding: 100px 0;
-      background: linear-gradient(135deg, var(--light), white);
-    }
-
-    .testimonial-card {
-      background: white;
-      border-radius: 25px;
-      padding: 40px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-      margin-bottom: 30px;
-      transition: transform 0.3s ease;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .testimonial-text {
-      font-size: 1.1rem;
-      color: #555;
-      line-height: 1.8;
-      margin-bottom: 25px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .author-avatar {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .author-info h5 {
-      margin: 0;
-      font-weight: 600;
-      color: var(--dark);
-    }
-
-    .author-info p {
-      margin: 0;
-      color: #888;
-      font-size: 0.9rem;
-    }
-
-    .stars {
-      color: #fbbf24;
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-    }
-
-    /* FAQ */
-    .faq {
-      padding: 100px 0;
-      background: white;
-    }
-
-    .accordion-item {
-      border: none;
-      margin-bottom: 20px;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .accordion-button {
-      background: linear-gradient(90deg, rgba(11, 188, 214, 0.1), rgba(16, 185, 129, 0.1));
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 20px 25px;
-      color: var(--dark);
-    }
-
-    .accordion-button:not(.collapsed) {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: white;
-    }
-
-    .accordion-button:focus {
-      box-shadow: none;
-    }
-
-    .accordion-body {
-      padding: 25px;
-      color: #666;
-      line-height: 1.8;
-    }
-
-    /* FOOTER */
     footer {
       background: linear-gradient(135deg, #023d3d, var(--dark));
       color: white;
@@ -532,7 +433,6 @@
       font-size: 1.2rem;
     }
 
-    /* ANIMATIONS */
     .fade-in {
       animation: fadeIn 0.8s ease-in;
     }
@@ -542,7 +442,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .hero-title {
         font-size: 2.5rem;
@@ -565,7 +464,6 @@
 
 <body>
 
-<!-- HERO SECTION -->
 <section class="hero">
   <div class="container hero-content">
     <div class="row align-items-center">
@@ -596,7 +494,6 @@
   </div>
 </section>
 
-<!-- STATS SECTION -->
 <section class="stats">
   <div class="container">
     <div class="row">
@@ -628,7 +525,6 @@
   </div>
 </section>
 
-<!-- APPS SECTION -->
 <section class="apps-section" id="apps">
   <div class="container">
     <div class="text-center mb-5">
@@ -656,7 +552,7 @@
             <li><i class="fas fa-check-circle"></i> Historique de vos courses</li>
           </ul>
           <div class="text-center">
-            <button class="btn-download" onclick="downloadApp('taxina.apk', this)">
+            <button class="btn-download" onclick="downloadApp('13MnQQ8gtH4qx6flvb48VKU3tub_shWyu', 'Passager', this)">
               <i class="fas fa-download"></i> Télécharger l'app Passager
             </button>
           </div>
@@ -683,7 +579,7 @@
             <li><i class="fas fa-check-circle"></i> Formation et accompagnement</li>
           </ul>
           <div class="text-center">
-            <button class="btn-download" onclick="downloadApp('taxina_driver.apk', this)">
+            <button class="btn-download" onclick="downloadApp('13MnQQ8gtH4qx6flvb48VKU3tub_shWyu', 'Driver', this)">
               <i class="fas fa-download"></i> Télécharger l'app Driver
             </button>
           </div>
@@ -693,7 +589,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section class="how-it-works" id="how">
   <div class="container">
     <div class="text-center mb-5">
@@ -726,144 +621,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="section-title">Ce que disent nos utilisateurs</h2>
-      <p class="section-subtitle">Des milliers de personnes nous font confiance chaque jour</p>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="testimonial-card">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p class="testimonial-text">"TAXina a changé ma façon de me déplacer à Niamey. Plus besoin de négocier longuement, tout est clair dès le départ. Les chauffeurs sont professionnels et ponctuels."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">AM</div>
-            <div class="author-info">
-              <h5>Aminata M.</h5>
-              <p>Utilisatrice depuis 6 mois</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial-card">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p class="testimonial-text">"Depuis que j'utilise TAXina Driver, mes revenus ont augmenté de 40%. Je reçois des courses régulièrement et je travaille quand je veux. C'est parfait pour moi !"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">IB</div>
-            <div class="author-info">
-              <h5>Ibrahim B.</h5>
-              <p>Chauffeur partenaire</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial-card">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p class="testimonial-text">"Application très pratique et facile à utiliser. Je me sens en sécurité car je connais le profil de mon chauffeur avant même qu'il arrive. Bravo TAXina !"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">FH</div>
-            <div class="author-info">
-              <h5>Fatouma H.</h5>
-              <p>Utilisatrice régulière</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="section-title">Questions Fréquentes</h2>
-      <p class="section-subtitle">Tout ce que vous devez savoir sur TAXina</p>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="accordion" id="faqAccordion">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                <i class="fas fa-shield-alt me-3"></i> L'application est-elle sécurisée ?
-              </button>
-            </h2>
-            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                Absolument ! TAXina est une application officielle, signée et sécurisée. Tous nos chauffeurs sont vérifiés et validés par notre équipe. Vos données personnelles sont protégées et nous ne les partageons jamais avec des tiers.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                <i class="fas fa-money-bill-wave me-3"></i> Quels sont les modes de paiement acceptés ?
-              </button>
-            </h2>
-            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                TAXina accepte plusieurs modes de paiement : espèces, mobile money (Orange Money, Moov Money, Airtel Money). Vous pouvez choisir votre mode de paiement préféré dans l'application avant de commander votre course.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                <i class="fas fa-car-side me-3"></i> Comment devenir chauffeur TAXina ?
-              </button>
-            </h2>
-            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                Téléchargez l'application TAXina Driver, inscrivez-vous avec vos informations et documents (permis de conduire, carte grise, assurance). Notre équipe vérifiera votre dossier et vous contactera pour finaliser votre inscription. Une fois validé, vous pourrez commencer à recevoir des courses.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                <i class="fas fa-map-marked-alt me-3"></i> TAXina est-il disponible dans toute la ville ?
-              </button>
-            </h2>
-            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                TAXina couvre actuellement toute la ville de Niamey. Nous travaillons activement pour étendre notre service à d'autres villes du Niger très prochainement. Restez connectés !
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                <i class="fas fa-headset me-3"></i> Comment contacter le support ?
-              </button>
-            </h2>
-            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                Notre équipe support est disponible par WhatsApp et téléphone au +227 81 26 50 75. Vous pouvez aussi nous contacter via l'application ou par email à support@taxina.ne. Nous répondons généralement en moins de 2 heures.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="row">
@@ -919,10 +676,6 @@
           <i class="fas fa-map-marker-alt"></i>
           <span>Niamey, Niger 🇳🇪</span>
         </div>
-        <div class="contact-info">
-          <i class="fas fa-clock"></i>
-          <span>Support 24h/24, 7j/7</span>
-        </div>
       </div>
     </div>
 
@@ -934,17 +687,15 @@
         <div class="col-md-6 text-center text-md-end">
           <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 15px;">Conditions d'utilisation</a>
           <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 15px;">Politique de confidentialité</a>
-          <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 15px;">Mentions légales</a>
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Counter Animation
+  // Animation des compteurs
   function animateCounter() {
     const counters = document.querySelectorAll('.counter');
     counters.forEach(counter => {
@@ -966,7 +717,7 @@
     });
   }
 
-  // Trigger counter when stats section is visible
+  // Observer pour déclencher l'animation au scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -979,63 +730,49 @@
   const statsSection = document.querySelector('.stats');
   if (statsSection) observer.observe(statsSection);
 
-  // Download button functionality
-  function downloadApp(filename, button) {
+  // Fonction de téléchargement pour Google Drive
+  function downloadApp(fileId, appName, button) {
     const originalText = button.innerHTML;
-    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Téléchargement en cours...';
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Préparation du téléchargement...';
     button.disabled = true;
 
+    // URL de téléchargement direct Google Drive
+    const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+    
+    // Créer un lien de téléchargement
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = `TAXina_${appName}.apk`;
+    link.target = '_blank';
+    
+    // Ajouter au DOM, cliquer, puis retirer
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Feedback utilisateur
     setTimeout(() => {
-      button.innerHTML = '<i class="fas fa-check-circle"></i> Merci pour votre confiance !';
+      button.innerHTML = '<i class="fas fa-check-circle"></i> Téléchargement lancé !';
       setTimeout(() => {
         button.innerHTML = originalText;
         button.disabled = false;
       }, 3000);
-    }, 2000);
+    }, 1000);
   }
 
-  // Smooth scroll for all anchor links
+  // Smooth scroll pour les ancres
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
       }
     });
   });
-
-  // Add animation on scroll
-  const fadeElements = document.querySelectorAll('.app-card, .step-card, .testimonial-card');
-  const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '0';
-        entry.target.style.transform = 'translateY(30px)';
-        setTimeout(() => {
-          entry.target.style.transition = 'all 0.6s ease';
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }, 100);
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  fadeElements.forEach(el => fadeObserver.observe(el));
 </script>
 
 </body>
-</html><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                <i class="fas fa-question-circle me-3"></i> Comment télécharger l'application ?
-              </button>
-            </h2>
-            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                Cliquez sur le bouton de téléchargement correspondant à votre profil (Passager ou Driver). Votre téléphone peut vous demander d'autoriser l'installation d'applications provenant de sources inconnues. Acceptez cette autorisation pour installer TAXina.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
+</html>
